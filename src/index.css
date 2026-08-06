@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sf-display: 'SF Pro Display', 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-sf-text: 'SF Pro Text', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'SF Mono', 'JetBrains Mono', monospace;
+
+    --color-action-blue: #0066CC;
+    --color-action-blue-focus: #0071E3;
+    --color-action-blue-dark: #2997FF;
+    --color-ink: #1D1D1F;
+    --color-parchment: #F5F5F7;
+    --color-hairline: #E0E0E0;
+  }
+
+  body {
+    font-family: var(--font-sf-text);
+    background-color: #FFFFFF;
+    color: #1D1D1F;
+    letter-spacing: -0.02em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sf-display);
+    color: #1D1D1F;
+  }
+
+  code, pre {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Giant Apple Typography Classes */
+.hero-display-text {
+  font-family: var(--font-sf-display);
+  font-size: clamp(42px, 7.5vw, 96px);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.display-lg-text {
+  font-family: var(--font-sf-display);
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.display-md-text {
+  font-family: var(--font-sf-display);
+  font-size: clamp(24px, 3.5vw, 40px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.lead-text {
+  font-family: var(--font-sf-text);
+  font-size: clamp(18px, 2.2vw, 26px);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0px;
+}
+
+.giant-metric {
+  font-family: var(--font-mono);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+}
+
+/* Glowing mesh animations */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(1deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.06); }
+}
+
+.animate-float {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F5F7;
+}
+::-webkit-scrollbar-thumb {
+  background: #D2D2D7;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A1A1A6;
+}
