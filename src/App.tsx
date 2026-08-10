@@ -15,21 +15,36 @@ import { ContactCtaSection } from './components/ContactCtaSection';
 import { Footer } from './components/Footer';
 import { Toast } from './components/Toast';
 
+import { CrmPage } from './pages/CrmPage';
+import { IndustriesPage } from './pages/IndustriesPage';
+import { PartnershipPage } from './pages/PartnershipPage';
+
 export function App() {
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [activeView, setActiveView] = useState<'home' | 'crm' | 'industries' | 'partnership'>('home');
 
   const scrollToContact = () => {
-    const contactElement = document.getElementById('contact');
-    if (contactElement) {
-      contactElement.scrollIntoView({ behavior: 'smooth' });
+    if (activeView !== 'home') {
+      setActiveView('home');
     }
+    setTimeout(() => {
+      const contactElement = document.getElementById('contact');
+      if (contactElement) {
+        contactElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
   };
 
   const scrollToServices = () => {
-    const servicesElement = document.getElementById('services');
-    if (servicesElement) {
-      servicesElement.scrollIntoView({ behavior: 'smooth' });
+    if (activeView !== 'home') {
+      setActiveView('home');
     }
+    setTimeout(() => {
+      const servicesElement = document.getElementById('services');
+      if (servicesElement) {
+        servicesElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
   };
 
   const showToast = (msg: string) => {
@@ -39,56 +54,89 @@ export function App() {
     }, 4000);
   };
 
+  const handleNavigate = (view: 'home' | 'crm' | 'industries' | 'partnership') => {
+    setActiveView(view);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-[#07090E] text-slate-100 font-sans selection:bg-blue-500 selection:text-white relative">
       {/* Toast Notification */}
       <Toast message={toastMessage} onClose={() => setToastMessage(null)} />
 
       {/* Sticky Glass Navbar */}
-      <Navbar onOpenContact={scrollToContact} />
+      <Navbar
+        onOpenContact={scrollToContact}
+        onNavigate={handleNavigate}
+        activeView={activeView}
+      />
+
+      {/* Dynamic Subpage View Routing */}
+      {activeView === 'crm' && (
+        <CrmPage
+          onBackToHome={() => handleNavigate('home')}
+          onOpenContact={scrollToContact}
+        />
+      )}
+
+      {activeView === 'industries' && (
+        <IndustriesPage
+          onBackToHome={() => handleNavigate('home')}
+          onOpenContact={scrollToContact}
+        />
+      )}
+
+      {activeView === 'partnership' && (
+        <PartnershipPage
+          onBackToHome={() => handleNavigate('home')}
+          onOpenContact={scrollToContact}
+        />
+      )}
 
       {/* Main Home Page Sections */}
-      <main className="w-full">
-        <HeroSection
-          onOpenTrial={() => {
-            showToast("Welcome! Requesting trial provisioning portal...");
-            scrollToContact();
-          }}
-          onWatchDemo={scrollToServices}
-        />
+      {activeView === 'home' && (
+        <main className="w-full">
+          <HeroSection
+            onOpenTrial={() => {
+              showToast("Welcome! Requesting trial provisioning portal...");
+              scrollToContact();
+            }}
+            onWatchDemo={scrollToServices}
+          />
 
-        <StartingPointsSection />
+          <StartingPointsSection />
 
-        <WhyVgtSection />
+          <WhyVgtSection />
 
-        <ErpComparisonSection />
+          <ErpComparisonSection />
 
-        <ShowcaseDashboard />
+          <ShowcaseDashboard />
 
-        <FeatureTabs
-          onOpenTrial={() => {
-            showToast("Feature node demo requested.");
-            scrollToContact();
-          }}
-        />
+          <FeatureTabs
+            onOpenTrial={() => {
+              showToast("Feature node demo requested.");
+              scrollToContact();
+            }}
+          />
 
-        <CrmShowcaseSection
-          onOpenTrial={() => {
-            showToast("CRM AI demo requested.");
-            scrollToContact();
-          }}
-        />
+          <CrmShowcaseSection
+            onOpenTrial={() => {
+              showToast("CRM AI demo requested.");
+              scrollToContact();
+            }}
+          />
 
-        <IndustryGrid />
+          <IndustryGrid />
 
-        <MicrosoftPartnershipCallout />
+          <MicrosoftPartnershipCallout />
 
-        <TestimonialCarousel />
+          <TestimonialCarousel />
 
-        <FaqAccordion />
+          <FaqAccordion />
 
-        <ContactCtaSection onShowToast={showToast} />
-      </main>
+          <ContactCtaSection onShowToast={showToast} />
+        </main>
+      )}
 
       {/* Footer */}
       <Footer />

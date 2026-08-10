@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Menu, X, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Menu, X, ArrowRight, ShieldCheck } from 'lucide-react';
 
 interface NavbarProps {
   onOpenContact: () => void;
+  onNavigate: (view: 'home' | 'crm' | 'industries' | 'partnership') => void;
+  activeView: 'home' | 'crm' | 'industries' | 'partnership';
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenContact, onNavigate, activeView }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,7 +29,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-between">
         {/* Brand Logo */}
-        <a href="#home" className="flex items-center gap-3 group">
+        <button onClick={() => onNavigate('home')} className="flex items-center gap-3 group text-left">
           <img
             src="/images/logo.png"
             alt="VGT ERP AI"
@@ -37,70 +38,45 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
           <span className="text-xl font-extrabold tracking-tight text-[#1D1D1F] font-display flex items-center gap-1.5">
             VGT ERP <span className="text-[#0066CC] font-black">AI</span>
           </span>
-        </a>
+        </button>
 
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-8">
-          <a
-            href="#home"
-            className="text-sm font-semibold text-[#1D1D1F] hover:text-[#0066CC] transition-colors py-1"
+          <button
+            onClick={() => onNavigate('home')}
+            className={`text-sm font-semibold transition-colors py-1 ${
+              activeView === 'home' ? 'text-[#0066CC]' : 'text-slate-700 hover:text-[#1D1D1F]'
+            }`}
           >
             Home
-          </a>
-          <a
-            href="#about"
-            className="text-sm font-medium text-slate-700 hover:text-[#1D1D1F] transition-colors py-1"
+          </button>
+          <button
+            onClick={() => onNavigate('crm')}
+            className={`text-sm font-semibold transition-colors py-1 ${
+              activeView === 'crm' ? 'text-[#0066CC]' : 'text-slate-700 hover:text-[#1D1D1F]'
+            }`}
           >
-            About
-          </a>
-          <a
-            href="#services"
-            className="text-sm font-medium text-slate-700 hover:text-[#1D1D1F] transition-colors py-1"
+            CRM Page
+          </button>
+          <button
+            onClick={() => onNavigate('industries')}
+            className={`text-sm font-semibold transition-colors py-1 ${
+              activeView === 'industries' ? 'text-[#0066CC]' : 'text-slate-700 hover:text-[#1D1D1F]'
+            }`}
           >
-            Services
-          </a>
-          <a
-            href="#crm"
-            className="text-sm font-medium text-slate-700 hover:text-[#1D1D1F] transition-colors py-1"
-          >
-            CRM
-          </a>
+            Industries Page
+          </button>
 
-          {/* Industries Dropdown */}
-          <div
-            className="relative"
-            onMouseEnter={() => setDropdownOpen(true)}
-            onMouseLeave={() => setDropdownOpen(false)}
+          {/* Microsoft Partnership Link */}
+          <button
+            onClick={() => onNavigate('partnership')}
+            className={`flex items-center gap-1.5 text-sm font-semibold transition-colors py-1 ${
+              activeView === 'partnership' ? 'text-[#0066CC]' : 'text-slate-700 hover:text-[#1D1D1F]'
+            }`}
           >
-            <button className="flex items-center gap-1 text-sm font-medium text-slate-700 hover:text-[#1D1D1F] py-1">
-              Industries <ChevronDown className={`w-4 h-4 transition-transform ${dropdownOpen ? 'rotate-180 text-[#0066CC]' : ''}`} />
-            </button>
-
-            {dropdownOpen && (
-              <div className="absolute top-full left-0 mt-2 w-60 p-2.5 rounded-[20px] bg-white border border-[#E0E0E0] shadow-2xl animate-in fade-in duration-200">
-                <a
-                  href="#industries"
-                  className="block px-4 py-3 text-sm text-slate-800 hover:text-[#1D1D1F] hover:bg-[#F5F5F7] rounded-xl transition-colors font-medium"
-                >
-                  All Enterprise Solutions
-                </a>
-                <a
-                  href="#partnership"
-                  className="flex items-center justify-between px-4 py-3 text-sm text-slate-800 hover:text-[#1D1D1F] hover:bg-[#F5F5F7] rounded-xl transition-colors font-medium"
-                >
-                  <span>Microsoft Partnership</span>
-                  <ShieldCheck className="w-4 h-4 text-[#0066CC]" />
-                </a>
-              </div>
-            )}
-          </div>
-
-          <a
-            href="#faq"
-            className="text-sm font-medium text-slate-700 hover:text-[#1D1D1F] transition-colors py-1"
-          >
-            FAQ
-          </a>
+            <span>Microsoft Partnership</span>
+            <ShieldCheck className="w-4 h-4 text-[#0066CC]" />
+          </button>
         </nav>
 
         {/* Action Blue Primary Pill CTA */}
@@ -128,55 +104,42 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
       {mobileMenuOpen && (
         <div className="md:hidden fixed inset-x-0 top-[65px] bg-white/95 backdrop-blur-2xl border-b border-[#E0E0E0] p-6 shadow-2xl animate-in fade-in duration-200">
           <div className="flex flex-col gap-3">
-            <a
-              href="#home"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-4 py-3 text-base font-bold text-[#1D1D1F] hover:bg-[#F5F5F7] rounded-xl"
+            <button
+              onClick={() => {
+                onNavigate('home');
+                setMobileMenuOpen(false);
+              }}
+              className="px-4 py-3 text-base font-bold text-[#1D1D1F] hover:bg-[#F5F5F7] rounded-xl text-left"
             >
               Home
-            </a>
-            <a
-              href="#about"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-4 py-3 text-base font-medium text-slate-700 hover:bg-[#F5F5F7] rounded-xl"
+            </button>
+            <button
+              onClick={() => {
+                onNavigate('crm');
+                setMobileMenuOpen(false);
+              }}
+              className="px-4 py-3 text-base font-medium text-slate-700 hover:bg-[#F5F5F7] rounded-xl text-left"
             >
-              About
-            </a>
-            <a
-              href="#services"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-4 py-3 text-base font-medium text-slate-700 hover:bg-[#F5F5F7] rounded-xl"
+              CRM Page
+            </button>
+            <button
+              onClick={() => {
+                onNavigate('industries');
+                setMobileMenuOpen(false);
+              }}
+              className="px-4 py-3 text-base font-medium text-slate-700 hover:bg-[#F5F5F7] rounded-xl text-left"
             >
-              Services
-            </a>
-            <a
-              href="#crm"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-4 py-3 text-base font-medium text-slate-700 hover:bg-[#F5F5F7] rounded-xl"
-            >
-              CRM
-            </a>
-            <a
-              href="#industries"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-4 py-3 text-base font-medium text-slate-700 hover:bg-[#F5F5F7] rounded-xl"
-            >
-              Industries
-            </a>
-            <a
-              href="#partnership"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-4 py-3 text-base font-medium text-slate-700 hover:bg-[#F5F5F7] rounded-xl"
+              Industries Page
+            </button>
+            <button
+              onClick={() => {
+                onNavigate('partnership');
+                setMobileMenuOpen(false);
+              }}
+              className="px-4 py-3 text-base font-medium text-slate-700 hover:bg-[#F5F5F7] rounded-xl text-left"
             >
               Microsoft Partnership
-            </a>
-            <a
-              href="#faq"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-4 py-3 text-base font-medium text-slate-700 hover:bg-[#F5F5F7] rounded-xl"
-            >
-              FAQ
-            </a>
+            </button>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
