@@ -24,6 +24,17 @@ export const ErpComparisonSection: React.FC = () => {
     'Supports executives with AI insights',
   ];
 
+  const matrixData = [
+    { area: 'Productivity', traditional: 'Medium', vgt: 'Very high' },
+    { area: 'Automation', traditional: 'Moderate', vgt: 'Extensive' },
+    { area: 'Decision speed', traditional: 'Hours or days', vgt: 'Minutes or seconds' },
+    { area: 'Forecast accuracy', traditional: 'Moderate', vgt: 'High' },
+    { area: 'Cost reduction', traditional: 'Limited', vgt: 'Significant' },
+    { area: 'Customer experience', traditional: 'Standard', vgt: 'Personalised & proactive' },
+    { area: 'Executive support', traditional: 'Reports', vgt: 'AI recommendations' },
+    { area: 'ROI', traditional: '2–4 years', vgt: '12–24 months' },
+  ];
+
   return (
     <section className="w-full py-20 sm:py-28 bg-[#FAFAFC] relative overflow-hidden border-b border-[#E5E5EA]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -40,8 +51,8 @@ export const ErpComparisonSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Dual Clean Comparison Cards with Equal Height & High Contrast */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+        {/* Dual Clean Comparison Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch mb-12 sm:mb-16">
           
           {/* Card 1: TRADITIONAL ERP */}
           <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/90 shadow-sm transition-all duration-300 hover:shadow-md flex flex-col justify-between h-full">
@@ -92,6 +103,43 @@ export const ErpComparisonSection: React.FC = () => {
           </div>
 
         </div>
+
+        {/* Business Area Matrix Table */}
+        <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm overflow-hidden">
+          {/* Table Header */}
+          <div className="grid grid-cols-12 px-6 sm:px-10 py-5 bg-[#FAFAFC] border-b border-slate-100 text-xs sm:text-sm font-bold tracking-widest uppercase">
+            <div className="col-span-5 sm:col-span-5 text-slate-400">
+              BUSINESS AREA
+            </div>
+            <div className="col-span-3 sm:col-span-3 text-slate-400">
+              TRADITIONAL ERP
+            </div>
+            <div className="col-span-4 sm:col-span-4 text-[#5E5CE6]">
+              VGT ERP AI
+            </div>
+          </div>
+
+          {/* Table Body Rows */}
+          <div className="divide-y divide-slate-100">
+            {matrixData.map((row, idx) => (
+              <div
+                key={idx}
+                className="grid grid-cols-12 px-6 sm:px-10 py-4.5 sm:py-5 items-center text-xs sm:text-base transition-colors hover:bg-slate-50/60"
+              >
+                <div className="col-span-5 sm:col-span-5 font-bold text-[#1D1D1F] pr-2">
+                  {row.area}
+                </div>
+                <div className="col-span-3 sm:col-span-3 font-normal text-slate-500 pr-2">
+                  {row.traditional}
+                </div>
+                <div className="col-span-4 sm:col-span-4 font-semibold text-[#5E5CE6]">
+                  {row.vgt}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );
