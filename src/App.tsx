@@ -5,6 +5,7 @@ import { StartingPointsSection } from './components/StartingPointsSection';
 import { WhyVgtSection } from './components/WhyVgtSection';
 import { ErpComparisonSection } from './components/ErpComparisonSection';
 import { OneScreenSection } from './components/OneScreenSection';
+import { RolloutSection } from './components/RolloutSection';
 import { ShowcaseDashboard } from './components/ShowcaseDashboard';
 import { FeatureTabs } from './components/FeatureTabs';
 import { CoreModulesSection } from './components/CoreModulesSection';
@@ -113,6 +114,8 @@ export function App() {
           <ErpComparisonSection />
 
           <OneScreenSection />
+
+          <RolloutSection />
 
           <ShowcaseDashboard />
 
