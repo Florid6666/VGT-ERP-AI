@@ -548,49 +548,47 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
           </div>
         </div>
 
-        {/* AI DIFFERENTIATORS */}
-        <div className="mb-24 bg-[#111319] text-white rounded-[32px] p-8 sm:p-14 shadow-2xl relative overflow-hidden border border-white/10">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[550px] bg-gradient-to-r from-blue-600/25 via-indigo-600/25 to-cyan-500/25 blur-[160px] pointer-events-none -z-0" />
+        {/* AI DIFFERENTIATORS (CLEAN GRID NO OUTER BLACK CONTAINER) */}
+        <div className="mb-24">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#0066CC] bg-blue-50 px-4 py-1.5 rounded-full border border-blue-200 mb-4 inline-block">
+              AI ADVANTAGE
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1D1D1F] tracking-tight mb-4">
+              AI Features That Make VGT CRM Different
+            </h2>
+            <p className="lead-text text-slate-600 max-w-2xl mx-auto font-normal">
+              Built-in machine learning models that continuously turn customer touchpoints into actionable sales intelligence.
+            </p>
+          </div>
 
-          <div className="relative z-10 space-y-12">
-            <div className="text-center max-w-3xl mx-auto">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#2997FF] bg-blue-950/90 px-4 py-1.5 rounded-full border border-blue-500/40 mb-4 inline-block shadow-md">
-                AI ADVANTAGE
-              </span>
-              <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
-                AI Features That Make VGT CRM Different
-              </h2>
-              <p className="text-slate-300 text-base font-normal max-w-2xl mx-auto">
-                Built-in machine learning models that continuously turn customer touchpoints into actionable sales intelligence.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {aiDifferentiators.map((diff, idx) => (
-                <div
-                  key={idx}
-                  className="bg-[#1C1F28] rounded-[24px] p-8 border border-white/15 space-y-5 hover:border-[#2997FF]/60 hover:shadow-[0_0_35px_rgba(41,151,255,0.18)] transition-all duration-300"
-                >
-                  <div className="flex items-center gap-3.5">
-                    <div className="p-3 rounded-2xl bg-blue-950/80 border border-blue-500/40 text-[#2997FF] shadow-inner">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {aiDifferentiators.map((diff, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-[24px] p-8 border border-slate-200/90 shadow-xs hover:border-[#0066CC] hover:shadow-xl transition-all duration-300 space-y-5 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center gap-3.5 mb-4">
+                    <div className="p-3 rounded-2xl bg-blue-50 border border-blue-100 text-[#0066CC]">
                       <Bot className="w-6 h-6" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white tracking-tight">{diff.title}</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#1D1D1F] tracking-tight">{diff.title}</h3>
                   </div>
 
-                  <p className="text-sm text-slate-300 font-medium">{diff.description}</p>
+                  <p className="text-sm text-slate-600 font-medium mb-4">{diff.description}</p>
 
-                  <ul className="space-y-3 pt-2">
+                  <ul className="space-y-3 pt-3 border-t border-slate-100">
                     {diff.bullets.map((b, bIdx) => (
-                      <li key={bIdx} className="flex items-start gap-3 text-sm text-slate-100 font-normal">
-                        <CheckCircle2 className="w-4.5 h-4.5 text-emerald-400 shrink-0 mt-0.5" />
+                      <li key={bIdx} className="flex items-start gap-3 text-sm text-slate-700 font-normal">
+                        <CheckCircle2 className="w-4.5 h-4.5 text-[#0066CC] shrink-0 mt-0.5" />
                         <span>{b}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
 
