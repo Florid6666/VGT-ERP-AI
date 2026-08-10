@@ -38,7 +38,7 @@ export const StartingPointsSection: React.FC = () => {
   const current = startingPoints[activeSlide];
 
   return (
-    <section className="w-full py-16 sm:py-24 bg-white relative overflow-hidden border-b border-[#E5E5EA]">
+    <section className="w-full pt-16 sm:pt-24 pb-0 bg-white relative overflow-hidden border-b border-[#E5E5EA]">
       {/* Header Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col items-center text-center relative z-10 mb-10 sm:mb-14">
         {/* Section Headline */}
@@ -56,7 +56,7 @@ export const StartingPointsSection: React.FC = () => {
       </div>
 
       {/* 100% Full-Bleed Stretched Covered Container */}
-      <div className="relative w-full overflow-hidden min-h-[750px] sm:min-h-[850px] lg:min-h-[920px] border-y border-slate-800 shadow-2xl transition-all duration-700 text-left group">
+      <div className="relative w-full overflow-hidden min-h-[680px] sm:min-h-[780px] lg:min-h-[840px] border-t border-slate-200 shadow-2xl transition-all duration-700 text-left group">
         
         {/* Full-Bleed Stretched Background Image */}
         <img
@@ -66,15 +66,18 @@ export const StartingPointsSection: React.FC = () => {
           className="absolute inset-0 w-full h-full object-cover object-center transition-all duration-1000 group-hover:scale-105"
         />
 
-        {/* Dark Gradient Backdrop Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/85 to-slate-950/40"></div>
+        {/* Top Vignette Overlay for Top Switcher Bar */}
+        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-slate-950/80 via-slate-950/40 to-transparent pointer-events-none" />
+
+        {/* Bottom Gradient Overlay to ensure text readability */}
+        <div className="absolute bottom-0 left-0 right-0 h-[60%] bg-gradient-to-t from-slate-950 via-slate-950/85 to-transparent pointer-events-none" />
 
         {/* Full-Bleed Overlay Content Wrapper */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10 py-10 sm:py-16 flex flex-col justify-between min-h-[750px] sm:min-h-[850px] lg:min-h-[920px]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10 pt-6 sm:pt-8 pb-8 sm:pb-12 flex flex-col justify-between min-h-[680px] sm:min-h-[780px] lg:min-h-[840px]">
           
           {/* Top Bar Switcher Tabs */}
-          <div className="flex items-center justify-between gap-4 pb-6 border-b border-white/10">
-            <div className="flex items-center gap-2 bg-slate-900/80 p-1.5 rounded-2xl border border-white/15 backdrop-blur-md">
+          <div className="flex items-center justify-between gap-4 pb-6">
+            <div className="flex items-center gap-2 bg-slate-950/80 p-1.5 rounded-2xl border border-white/20 backdrop-blur-xl shadow-lg">
               {startingPoints.map((item, idx) => (
                 <button
                   key={item.id}
@@ -94,14 +97,14 @@ export const StartingPointsSection: React.FC = () => {
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setActiveSlide((prev) => (prev === 0 ? 1 : 0))}
-                className="p-3 rounded-2xl bg-slate-900/80 hover:bg-slate-800 text-white border border-white/20 transition-all active:scale-95 backdrop-blur-md"
+                className="p-3 rounded-2xl bg-slate-950/80 hover:bg-slate-900 text-white border border-white/20 transition-all active:scale-95 backdrop-blur-xl shadow-lg"
                 title="Previous Option"
               >
                 <ArrowLeft className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setActiveSlide((prev) => (prev === 0 ? 1 : 0))}
-                className="p-3 rounded-2xl bg-slate-900/80 hover:bg-slate-800 text-white border border-white/20 transition-all active:scale-95 backdrop-blur-md"
+                className="p-3 rounded-2xl bg-slate-950/80 hover:bg-slate-900 text-white border border-white/20 transition-all active:scale-95 backdrop-blur-xl shadow-lg"
                 title="Next Option"
               >
                 <ArrowRight className="w-4 h-4" />
@@ -110,24 +113,24 @@ export const StartingPointsSection: React.FC = () => {
           </div>
 
           {/* Main Overlay Copy & Checklist */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pt-8 pb-4">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pt-8 pb-2">
             {/* Left Headline & Description (7 cols) */}
             <div className="lg:col-span-7">
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6 tracking-tight leading-tight uppercase">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6 tracking-tight leading-tight uppercase drop-shadow-md">
                 {current.title}
               </h3>
 
-              <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-normal max-w-2xl">
+              <p className="text-slate-200 text-base sm:text-lg leading-relaxed font-normal max-w-2xl drop-shadow">
                 {current.description}
               </p>
             </div>
 
             {/* Right Checklist Box (5 cols) */}
-            <div className="lg:col-span-5 bg-slate-950/80 backdrop-blur-xl border border-white/15 p-6 sm:p-8 rounded-3xl shadow-2xl">
+            <div className="lg:col-span-5 bg-slate-950/85 backdrop-blur-xl border border-white/20 p-6 sm:p-8 rounded-3xl shadow-2xl">
               <ul className="space-y-4">
                 {current.highlights.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-3.5 text-xs sm:text-sm font-medium text-slate-200">
-                    <div className="p-1 rounded-full bg-[#0066CC] text-white mt-0.5 shrink-0">
+                  <li key={idx} className="flex items-start gap-3.5 text-xs sm:text-sm font-medium text-slate-100">
+                    <div className="p-1 rounded-full bg-[#0066CC] text-white mt-0.5 shrink-0 shadow-sm">
                       <Check className="w-3.5 h-3.5 stroke-[3]" />
                     </div>
                     <span className="leading-snug">{item}</span>
