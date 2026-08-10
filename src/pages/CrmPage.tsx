@@ -16,6 +16,10 @@ import {
   Layers,
   Building2,
   Check,
+  UserPlus,
+  Target,
+  Headphones,
+  Megaphone,
 } from 'lucide-react';
 
 interface CrmPageProps {
@@ -62,8 +66,11 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
   // Complete CRM Feature Modules
   const featureModules = [
     {
+      id: 'lead',
       title: 'Lead Management',
       subtitle: 'Generate, assign, qualify, and nurture leads automatically.',
+      icon: <UserPlus className="w-5 h-5 text-[#0066CC]" />,
+      badgeColor: 'bg-blue-50 text-[#0066CC] border-blue-200',
       tags: [
         'Lead Capture',
         'Lead Assignment',
@@ -78,8 +85,11 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
       ],
     },
     {
+      id: 'contact',
       title: 'Contact Management',
       subtitle: 'Maintain complete customer profiles in one central hub.',
+      icon: <Users className="w-5 h-5 text-[#00C7BE]" />,
+      badgeColor: 'bg-teal-50 text-[#00C7BE] border-teal-200',
       tags: [
         'Customer Database',
         'Contact History',
@@ -93,8 +103,11 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
       ],
     },
     {
+      id: 'opportunity',
       title: 'Opportunity Management',
       subtitle: 'Track every sales opportunity from inquiry to closed deal.',
+      icon: <Target className="w-5 h-5 text-[#5E5CE6]" />,
+      badgeColor: 'bg-purple-50 text-[#5E5CE6] border-purple-200',
       tags: [
         'Sales Pipeline',
         'Opportunity Tracking',
@@ -107,8 +120,11 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
       ],
     },
     {
+      id: 'automation',
       title: 'Sales Automation',
       subtitle: 'Automate repetitive sales tasks and boost rep efficiency.',
+      icon: <Zap className="w-5 h-5 text-amber-600" />,
+      badgeColor: 'bg-amber-50 text-amber-600 border-amber-200',
       tags: [
         'Email Sequences',
         'Task Automation',
@@ -121,22 +137,11 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
       ],
     },
     {
-      title: 'AI Sales Assistant',
-      subtitle: 'Your intelligent 24/7 sales companion and deal advisor.',
-      tags: [
-        'Suggest Next Best Action',
-        'Predict Closing Probability',
-        'Customer Sentiment Analysis',
-        'Upselling Recommendations',
-        'Cross-Selling Opportunities',
-        'AI Email Drafting',
-        'AI Meeting Summaries',
-        'Conversation Intelligence',
-      ],
-    },
-    {
+      id: 'service',
       title: 'Customer Service Management',
       subtitle: 'Deliver exceptional customer support across every channel.',
+      icon: <Headphones className="w-5 h-5 text-emerald-600" />,
+      badgeColor: 'bg-emerald-50 text-emerald-600 border-emerald-200',
       tags: [
         'Ticket Management',
         'Case Management',
@@ -149,8 +154,11 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
       ],
     },
     {
+      id: 'marketing',
       title: 'Marketing Automation',
       subtitle: 'Create targeted, multi-channel campaigns that convert.',
+      icon: <Megaphone className="w-5 h-5 text-rose-600" />,
+      badgeColor: 'bg-rose-50 text-rose-600 border-rose-200',
       tags: [
         'Email Marketing',
         'SMS Campaigns',
@@ -433,32 +441,85 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* 3-Column Balanced Grid for 6 Core Modules */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8">
             {featureModules.map((mod, idx) => (
               <div
-                key={idx}
-                className="bg-white rounded-[24px] p-8 border border-slate-200/90 shadow-xs hover:border-[#5E5CE6] hover:shadow-lg transition-all duration-300 space-y-6"
+                key={mod.id}
+                className="bg-white rounded-[24px] p-7 border border-slate-200/90 shadow-xs hover:border-[#0066CC] hover:shadow-xl transition-all duration-300 flex flex-col justify-between space-y-6 group"
               >
                 <div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-indigo-50 text-[#5E5CE6] text-xs font-mono font-bold mb-3">
-                    FEATURE SUITE 0{idx + 1}
-                  </div>
-                  <h3 className="text-2xl font-bold text-[#1D1D1F] mb-2">{mod.title}</h3>
-                  <p className="text-sm text-slate-600 font-normal">{mod.subtitle}</p>
-                </div>
-
-                <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-100">
-                  {mod.tags.map((tag, tIdx) => (
-                    <span
-                      key={tIdx}
-                      className="px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-700"
-                    >
-                      {tag}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200/80 group-hover:scale-110 transition-transform">
+                      {mod.icon}
+                    </div>
+                    <span className={`text-[10px] font-mono font-bold px-3 py-1 rounded-full border ${mod.badgeColor}`}>
+                      SUITE 0{idx + 1}
                     </span>
-                  ))}
+                  </div>
+
+                  <h3 className="text-xl font-bold text-[#1D1D1F] mb-2 group-hover:text-[#0066CC] transition-colors">
+                    {mod.title}
+                  </h3>
+                  <p className="text-xs text-slate-500 leading-relaxed font-normal mb-6">
+                    {mod.subtitle}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100">
+                    {mod.tags.map((tag, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200/70 text-xs font-semibold text-slate-700 hover:bg-blue-50 hover:text-[#0066CC] hover:border-blue-200 transition-all"
+                      >
+                        <Check className="w-3.5 h-3.5 text-[#0066CC] shrink-0" />
+                        <span>{tag}</span>
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Featured Spotlight Card: AI Sales Assistant */}
+          <div className="bg-gradient-to-r from-[#1D1D1F] via-[#242428] to-[#1D1D1F] text-white rounded-[28px] p-8 sm:p-10 border border-blue-500/30 shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 blur-[120px] rounded-full pointer-events-none" />
+            
+            <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+              <div className="max-w-xl space-y-4">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-950/90 border border-blue-500/40 text-[#2997FF] text-xs font-mono font-bold">
+                  <Sparkles className="w-4 h-4" />
+                  <span>NATIVE AI COPILOT</span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                  AI Sales Assistant & Conversation Intelligence
+                </h3>
+                <p className="text-slate-300 text-sm leading-relaxed font-normal">
+                  Your intelligent 24/7 sales companion, deal advisor, and automated communication assistant built directly into every CRM workflow.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-2.5 max-w-2xl">
+                {[
+                  'Suggest Next Best Action',
+                  'Predict Closing Probability',
+                  'Customer Sentiment Analysis',
+                  'Upselling Recommendations',
+                  'Cross-Selling Opportunities',
+                  'AI Email Drafting',
+                  'AI Meeting Summaries',
+                  'Conversation Intelligence',
+                ].map((tag, tIdx) => (
+                  <span
+                    key={tIdx}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900/90 border border-white/15 text-xs font-semibold text-slate-200 hover:border-blue-400 hover:text-white transition-all shadow-xs"
+                  >
+                    <CheckCircle2 className="w-4 h-4 text-[#2997FF] shrink-0" />
+                    <span>{tag}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
