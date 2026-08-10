@@ -323,13 +323,13 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
         </div>
 
         {/* HERO SECTION */}
-        <div className="relative mb-20">
-          {/* Hero Background Ambient Spotlight Mesh */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-[90%] bg-gradient-to-r from-blue-400/15 via-purple-400/15 to-cyan-400/15 blur-[140px] rounded-full pointer-events-none -z-10" />
+        <div className="relative mb-24">
+          {/* Hero Ambient Background Spotlight Mesh */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-gradient-to-r from-blue-500/15 via-indigo-500/15 to-cyan-500/15 blur-[160px] rounded-full pointer-events-none -z-10" />
 
-          {/* Hero Text Content */}
+          {/* Hero Text Header */}
           <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16">
-            <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#0066CC] text-xs font-bold uppercase tracking-widest mb-6 shadow-xs">
+            <div className="inline-flex items-center justify-center gap-2 px-4.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#0066CC] text-xs font-extrabold uppercase tracking-widest mb-6 shadow-xs">
               <Sparkles className="w-4 h-4 text-[#0066CC]" />
               <span>INTELLIGENT CUSTOMER RELATIONSHIP MANAGEMENT</span>
             </div>
@@ -337,7 +337,7 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
             <h1 className="display-lg-text text-[#1D1D1F] font-extrabold tracking-tight mb-6 leading-[1.1]">
               VGT AI CRM — Sell Smarter, Close Faster &{' '}
               <span className="bg-gradient-to-r from-[#0066CC] via-[#5E5CE6] to-[#00C7BE] bg-clip-text text-transparent">
-                Accelerate Growth
+                Accelerate Revenue
               </span>
             </h1>
 
@@ -348,7 +348,7 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={onOpenContact}
-                className="w-full sm:w-auto px-9 py-4 rounded-full bg-[#0066CC] hover:bg-[#0071E3] text-white font-semibold text-base shadow-md hover:shadow-xl hover:scale-105 active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 group"
+                className="w-full sm:w-auto px-9 py-4 rounded-full bg-[#0066CC] hover:bg-[#0071E3] text-white font-semibold text-base shadow-lg hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 group"
               >
                 <span>Request a Free Demo</span>
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
@@ -363,39 +363,64 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
             </div>
           </div>
 
-          {/* CLEAN UNBOXED 5K DASHBOARD PREVIEW */}
+          {/* STUDIO DISPLAY MONITOR MOCKUP SHOWCASE */}
           <div className="relative max-w-6xl mx-auto group">
-            <div className="relative rounded-2xl overflow-hidden border border-slate-200/90 shadow-[0_20px_50px_rgba(0,0,0,0.12)] bg-slate-950">
-              <img
-                src="/images/crm_dashboard_mockup.png"
-                alt="VGT AI CRM Executive Dashboard"
-                className="w-full h-auto object-contain block group-hover:scale-[1.005] transition-transform duration-500"
-              />
-              
-              {/* Floating Top Telemetry Badge */}
-              <div className="absolute top-4 left-4 sm:top-6 sm:left-6 px-4 py-2 rounded-full bg-slate-950/85 backdrop-blur-md border border-white/20 text-xs font-mono text-white flex items-center gap-2.5 shadow-xl">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="font-semibold tracking-wide">LIVE AI SALES COPILOT & PIPELINE TELEMETRY</span>
+            {/* Monitor Screen Frame */}
+            <div className="relative rounded-[22px] sm:rounded-[30px] bg-slate-950 border-[8px] sm:border-[14px] border-[#1D1D1F] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.35)] overflow-hidden transition-all duration-500">
+              {/* Top Camera Dot */}
+              <div className="absolute top-2 left-1/2 -translate-x-1/2 z-20 flex items-center justify-center pointer-events-none">
+                <div className="w-2.5 h-2.5 rounded-full bg-[#111113] ring-1 ring-slate-800 flex items-center justify-center">
+                  <div className="w-1 h-1 rounded-full bg-slate-700"></div>
+                </div>
+              </div>
+
+              {/* Browser Address Bar */}
+              <div className="flex items-center justify-between px-5 py-2.5 bg-[#1D1D1F] border-b border-slate-800 text-xs">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-[#FF5F56]"></div>
+                  <div className="w-3 h-3 rounded-full bg-[#FFBD2E]"></div>
+                  <div className="w-3 h-3 rounded-full bg-[#27C93F]"></div>
+                  <span className="text-[11px] font-mono text-slate-300 ml-3 font-semibold">
+                    vgt-ai-crm://app.enterprise/executive-telemetry
+                  </span>
+                </div>
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-950 border border-emerald-500/40 text-emerald-400 text-[10px] font-mono font-bold">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  LIVE TELEMETRY
+                </span>
+              </div>
+
+              {/* Monitor Display Image */}
+              <div className="relative w-full bg-slate-950 overflow-hidden">
+                <img
+                  src="/images/crm_dashboard_mockup.png"
+                  alt="VGT AI CRM Executive Dashboard on Monitor Display"
+                  className="w-full h-auto object-contain block group-hover:scale-[1.005] transition-transform duration-500"
+                />
               </div>
             </div>
 
+            {/* Studio Display Metallic Arm & Base */}
+            <div className="w-28 sm:w-40 h-8 sm:h-12 bg-gradient-to-b from-[#2C2C2E] via-[#3A3A3C] to-[#1C1C1E] mx-auto border-x border-slate-700 shadow-inner rounded-t-sm -mt-0.5 z-0" />
+            <div className="w-64 sm:w-96 h-3 sm:h-4 bg-gradient-to-b from-[#3A3A3C] via-[#2C2C2E] to-[#1C1C1E] rounded-full mx-auto border-t border-slate-500/80 shadow-2xl -mt-1 z-10" />
+
             {/* Quick KPI Stats Bar Below Dashboard */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-              <div className="bg-white rounded-2xl p-4 border border-slate-200/90 text-center shadow-xs">
-                <span className="block text-xl font-extrabold text-[#0066CC]">+42%</span>
-                <span className="text-xs font-medium text-slate-500">Pipeline Velocity</span>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+              <div className="bg-white rounded-2xl p-5 border border-slate-200/90 text-center shadow-xs hover:shadow-md transition-shadow">
+                <span className="block text-2xl font-extrabold text-[#0066CC]">+42%</span>
+                <span className="text-xs font-semibold text-slate-600">Pipeline Velocity</span>
               </div>
-              <div className="bg-white rounded-2xl p-4 border border-slate-200/90 text-center shadow-xs">
-                <span className="block text-xl font-extrabold text-[#5E5CE6]">94%</span>
-                <span className="text-xs font-medium text-slate-500">AI Forecast Accuracy</span>
+              <div className="bg-white rounded-2xl p-5 border border-slate-200/90 text-center shadow-xs hover:shadow-md transition-shadow">
+                <span className="block text-2xl font-extrabold text-[#5E5CE6]">94%</span>
+                <span className="text-xs font-semibold text-slate-600">AI Forecast Accuracy</span>
               </div>
-              <div className="bg-white rounded-2xl p-4 border border-slate-200/90 text-center shadow-xs">
-                <span className="block text-xl font-extrabold text-emerald-600">0 Entry</span>
-                <span className="text-xs font-medium text-slate-500">Manual Logging</span>
+              <div className="bg-white rounded-2xl p-5 border border-slate-200/90 text-center shadow-xs hover:shadow-md transition-shadow">
+                <span className="block text-2xl font-extrabold text-emerald-600">0 Entry</span>
+                <span className="text-xs font-semibold text-slate-600">Manual Logging</span>
               </div>
-              <div className="bg-white rounded-2xl p-4 border border-slate-200/90 text-center shadow-xs">
-                <span className="block text-xl font-extrabold text-[#00C7BE]">99.99%</span>
-                <span className="text-xs font-medium text-slate-500">Cloud Uptime</span>
+              <div className="bg-white rounded-2xl p-5 border border-slate-200/90 text-center shadow-xs hover:shadow-md transition-shadow">
+                <span className="block text-2xl font-extrabold text-[#00C7BE]">99.99%</span>
+                <span className="text-xs font-semibold text-slate-600">Cloud Uptime</span>
               </div>
             </div>
           </div>
@@ -524,38 +549,41 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
         </div>
 
         {/* AI DIFFERENTIATORS */}
-        <div className="mb-24 bg-[#1D1D1F] text-white rounded-[28px] p-8 sm:p-14 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-gradient-to-r from-blue-600/20 via-indigo-600/20 to-cyan-500/20 blur-[150px] pointer-events-none" />
+        <div className="mb-24 bg-[#111319] text-white rounded-[32px] p-8 sm:p-14 shadow-2xl relative overflow-hidden border border-white/10">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[550px] bg-gradient-to-r from-blue-600/25 via-indigo-600/25 to-cyan-500/25 blur-[160px] pointer-events-none -z-0" />
 
           <div className="relative z-10 space-y-12">
             <div className="text-center max-w-3xl mx-auto">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#2997FF] bg-blue-950/80 px-4 py-1.5 rounded-full border border-blue-500/40 mb-4 inline-block">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#2997FF] bg-blue-950/90 px-4 py-1.5 rounded-full border border-blue-500/40 mb-4 inline-block shadow-md">
                 AI ADVANTAGE
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
+              <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
                 AI Features That Make VGT CRM Different
               </h2>
+              <p className="text-slate-300 text-base font-normal max-w-2xl mx-auto">
+                Built-in machine learning models that continuously turn customer touchpoints into actionable sales intelligence.
+              </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {aiDifferentiators.map((diff, idx) => (
                 <div
                   key={idx}
-                  className="bg-[#272729] rounded-2xl p-8 border border-white/15 space-y-4 hover:border-blue-500/50 transition-all"
+                  className="bg-[#1C1F28] rounded-[24px] p-8 border border-white/15 space-y-5 hover:border-[#2997FF]/60 hover:shadow-[0_0_35px_rgba(41,151,255,0.18)] transition-all duration-300"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-xl bg-blue-950 border border-blue-500/40 text-[#2997FF]">
-                      <Bot className="w-5 h-5" />
+                  <div className="flex items-center gap-3.5">
+                    <div className="p-3 rounded-2xl bg-blue-950/80 border border-blue-500/40 text-[#2997FF] shadow-inner">
+                      <Bot className="w-6 h-6" />
                     </div>
-                    <h3 className="text-xl font-bold text-white">{diff.title}</h3>
+                    <h3 className="text-2xl font-bold text-white tracking-tight">{diff.title}</h3>
                   </div>
 
-                  <p className="text-sm text-slate-300 font-normal">{diff.description}</p>
+                  <p className="text-sm text-slate-300 font-medium">{diff.description}</p>
 
-                  <ul className="space-y-2.5 pt-2">
+                  <ul className="space-y-3 pt-2">
                     {diff.bullets.map((b, bIdx) => (
-                      <li key={bIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                      <li key={bIdx} className="flex items-start gap-3 text-sm text-slate-100 font-normal">
+                        <CheckCircle2 className="w-4.5 h-4.5 text-emerald-400 shrink-0 mt-0.5" />
                         <span>{b}</span>
                       </li>
                     ))}
