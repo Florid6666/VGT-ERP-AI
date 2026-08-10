@@ -1,9 +1,18 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Absans';
+  src: url('/fonts/Absans-Regular.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
-    --font-sf-display: 'SF Pro Display', 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-sf-text: 'SF Pro Text', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-absans: 'Absans', 'SF Pro Display', 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-sf-display: 'Absans', 'SF Pro Display', 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-sf-text: 'Absans', 'SF Pro Text', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-mono: 'SF Mono', 'JetBrains Mono', monospace;
 
     --color-action-blue: #0066CC;
@@ -15,14 +24,14 @@
   }
 
   body {
-    font-family: var(--font-sf-text);
+    font-family: var(--font-absans);
     background-color: #FFFFFF;
     color: #1D1D1F;
     letter-spacing: -0.02em;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-sf-display);
+    font-family: var(--font-absans);
     color: #1D1D1F;
   }
 

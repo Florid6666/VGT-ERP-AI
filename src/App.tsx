@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { StartingPointsSection } from './components/StartingPointsSection';
+import { WhyVgtSection } from './components/WhyVgtSection';
 import { ShowcaseDashboard } from './components/ShowcaseDashboard';
 import { FeatureTabs } from './components/FeatureTabs';
 import { IndustryGrid } from './components/IndustryGrid';
@@ -55,6 +56,8 @@ export function App() {
         />
 
         <StartingPointsSection />
+
+        <WhyVgtSection />
 
         <ShowcaseDashboard />
 
