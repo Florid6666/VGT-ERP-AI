@@ -9,6 +9,8 @@ export const ErpComparisonSection: React.FC = () => {
     'Requires users to interpret data',
     'Reactive to business events',
     'Depends heavily on manual analysis',
+    'Slow, rigid module customisations',
+    'Siloed operational visibility',
   ];
 
   const aiFeatures = [
@@ -33,56 +35,60 @@ export const ErpComparisonSection: React.FC = () => {
               ERP AI decides.
             </span>
           </h2>
-          <p className="text-base sm:text-xl text-slate-500 font-normal tracking-tight">
+          <p className="text-base sm:text-xl text-slate-600 font-medium tracking-tight max-w-2xl">
             Same operational backbone. A completely different return on it.
           </p>
         </div>
 
-        {/* Dual Clean Comparison Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        {/* Dual Clean Comparison Cards with Equal Height & High Contrast */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
           
           {/* Card 1: TRADITIONAL ERP */}
-          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/90 shadow-sm transition-all duration-300 hover:shadow-md">
-            {/* Header Label */}
-            <div className="mb-8">
-              <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-slate-400">
-                TRADITIONAL ERP
-              </span>
-            </div>
+          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/90 shadow-sm transition-all duration-300 hover:shadow-md flex flex-col justify-between h-full">
+            <div>
+              {/* Header Label */}
+              <div className="mb-8">
+                <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-slate-500">
+                  TRADITIONAL ERP
+                </span>
+              </div>
 
-            {/* Feature List */}
-            <ul className="space-y-5">
-              {traditionalFeatures.map((item, idx) => (
-                <li key={idx} className="flex items-start gap-4 text-sm sm:text-base font-normal text-slate-500">
-                  <span className="text-slate-300 font-bold shrink-0 mt-0.5 text-base select-none">
-                    <X className="w-4 h-4 text-slate-400 stroke-[2]" />
-                  </span>
-                  <span className="leading-snug">{item}</span>
-                </li>
-              ))}
-            </ul>
+              {/* Feature List */}
+              <ul className="space-y-5">
+                {traditionalFeatures.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-4 text-sm sm:text-base font-medium text-slate-700">
+                    <span className="text-slate-400 shrink-0 mt-0.5 select-none">
+                      <X className="w-4 h-4 text-slate-400 stroke-[2.5]" />
+                    </span>
+                    <span className="leading-snug">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Card 2: VGT ERP AI */}
-          <div className="bg-white rounded-3xl p-8 sm:p-12 border-2 border-[#5E5CE6]/30 shadow-xl shadow-indigo-500/5 transition-all duration-300 hover:border-[#5E5CE6]/60">
-            {/* Header Label */}
-            <div className="mb-8">
-              <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#5E5CE6]">
-                VGT ERP AI
-              </span>
-            </div>
+          <div className="bg-white rounded-3xl p-8 sm:p-12 border-2 border-[#5E5CE6]/35 shadow-xl shadow-indigo-500/5 transition-all duration-300 hover:border-[#5E5CE6]/70 flex flex-col justify-between h-full">
+            <div>
+              {/* Header Label */}
+              <div className="mb-8">
+                <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#5E5CE6]">
+                  VGT ERP AI
+                </span>
+              </div>
 
-            {/* Feature List */}
-            <ul className="space-y-5">
-              {aiFeatures.map((item, idx) => (
-                <li key={idx} className="flex items-start gap-4 text-sm sm:text-base font-medium text-[#1D1D1F]">
-                  <span className="text-[#5E5CE6] shrink-0 mt-0.5 select-none">
-                    <Check className="w-4 h-4 text-[#5E5CE6] stroke-[2.5]" />
-                  </span>
-                  <span className="leading-snug">{item}</span>
-                </li>
-              ))}
-            </ul>
+              {/* Feature List */}
+              <ul className="space-y-5">
+                {aiFeatures.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-4 text-sm sm:text-base font-semibold text-[#1D1D1F]">
+                    <span className="text-[#5E5CE6] shrink-0 mt-0.5 select-none">
+                      <Check className="w-4 h-4 text-[#5E5CE6] stroke-[3]" />
+                    </span>
+                    <span className="leading-snug">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
         </div>
