@@ -91,6 +91,30 @@
   animation: pulseGlow 4s ease-in-out infinite;
 }
 
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-cursor {
+  animation: cursorBlink 0.8s step-end infinite;
+}
+
+/* Checkered Architectural Grid Pattern with Subtle Bluish Glow Mask */
+.hero-grid-pattern {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-size: 72px 72px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 102, 204, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 102, 204, 0.09) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse 95% 85% at 50% 32%, #000 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 95% 85% at 50% 32%, #000 60%, transparent 100%);
+  filter: drop-shadow(0 0 6px rgba(0, 102, 204, 0.10));
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

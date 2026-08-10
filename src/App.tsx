@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
-import { MetricSparklines } from './components/MetricSparklines';
+import { StartingPointsSection } from './components/StartingPointsSection';
 import { ShowcaseDashboard } from './components/ShowcaseDashboard';
 import { FeatureTabs } from './components/FeatureTabs';
 import { IndustryGrid } from './components/IndustryGrid';
@@ -54,7 +54,7 @@ export function App() {
           onWatchDemo={scrollToServices}
         />
 
-        <MetricSparklines />
+        <StartingPointsSection />
 
         <ShowcaseDashboard />
 

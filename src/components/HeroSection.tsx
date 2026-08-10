@@ -1,5 +1,5 @@
-import React from 'react';
-import { ArrowRight, Play, Shield, Cpu, Zap } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ArrowRight, Play } from 'lucide-react';
 import { LaptopMockup } from './LaptopMockup';
 
 interface HeroSectionProps {
@@ -7,13 +7,60 @@ interface HeroSectionProps {
   onWatchDemo: () => void;
 }
 
+const TypewriterText: React.FC = () => {
+  const words = [
+    "Cloud Enterprise ERP Suite",
+    "Autonomous Supply Chain",
+    "Real-Time Financial Intelligence",
+    "Predictive Procurement Engine",
+    "Smart Manufacturing Operations"
+  ];
+
+  const [index, setIndex] = useState(0);
+  const [subIndex, setSubIndex] = useState(0);
+  const [reverse, setReverse] = useState(false);
+
+  useEffect(() => {
+    if (subIndex === words[index].length + 1 && !reverse) {
+      const timeout = setTimeout(() => setReverse(true), 2200);
+      return () => clearTimeout(timeout);
+    }
+
+    if (subIndex === 0 && reverse) {
+      setReverse(false);
+      setIndex((prev) => (prev + 1) % words.length);
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      setSubIndex((prev) => prev + (reverse ? -1 : 1));
+    }, reverse ? 35 : 70);
+
+    return () => clearTimeout(timeout);
+  }, [subIndex, index, reverse, words]);
+
+  const currentText = words[index].substring(0, subIndex);
+
+  return (
+    <span className="inline-block relative whitespace-nowrap max-w-full text-[clamp(28px,5vw,76px)] sm:text-[clamp(36px,5.8vw,84px)]">
+      <span className="bg-gradient-to-r from-[#0066CC] via-[#5E5CE6] to-[#00C7BE] bg-clip-text text-transparent pb-1 leading-tight">
+        {currentText || '\u00A0'}
+      </span>
+      <span className="inline-block w-[3px] sm:w-[5px] h-[0.75em] ml-1.5 bg-[#0066CC] rounded-full align-middle animate-cursor shadow-[0_0_12px_rgba(0,102,204,0.6)]" />
+    </span>
+  );
+};
+
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenTrial, onWatchDemo }) => {
   return (
-    <section id="home" className="w-full relative pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-36 overflow-hidden bg-white">
-      {/* Eye-Catchy Pastel Mesh Radial Glow Aura */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[1100px] h-[450px] sm:h-[650px] bg-gradient-to-tr from-blue-300/50 via-indigo-200/40 to-cyan-300/50 blur-[150px] rounded-full pointer-events-none -z-10 animate-glow"></div>
+    <section id="home" className="w-full relative pt-32 pb-10 sm:pt-40 sm:pb-10 lg:pt-48 lg:pb-10 overflow-hidden bg-white">
+      {/* Checkered Grid Pattern Depth Layer */}
+      <div className="hero-grid-pattern"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col items-center text-center">
+      {/* Eye-Catchy Pastel Mesh Radial Glow Aura */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[1100px] h-[450px] sm:h-[650px] bg-gradient-to-tr from-blue-300/40 via-indigo-200/30 to-cyan-300/40 blur-[150px] rounded-full pointer-events-none z-0 animate-glow"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col items-center text-center relative z-10">
         {/* Social Proof Capsule */}
         <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-[#F5F5F7] border border-[#E0E0E0] shadow-xs mb-8 group hover:border-[#0066CC]/40 transition-all duration-300">
           <div className="flex -space-x-1.5 overflow-hidden">
@@ -38,9 +85,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenTrial, onWatchDe
         {/* Giant Keynote SF Display Headline (96px max) */}
         <h1 className="hero-display-text text-[#1D1D1F] max-w-6xl mb-6">
           Autonomous, AI-Powered <br className="hidden sm:inline" />
-          <span className="bg-gradient-to-r from-[#0066CC] via-[#5E5CE6] to-[#00C7BE] bg-clip-text text-transparent">
-            Cloud Enterprise ERP Suite
-          </span>
+          <TypewriterText />
         </h1>
 
         {/* Lead Tagline */}
@@ -69,22 +114,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenTrial, onWatchDe
 
         {/* LAPTOP PRODUCT MOCKUP DEMO */}
         <LaptopMockup initialImage="/images/erp_operations_dashboard.png" />
-
-        {/* Feature Badges Strip */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl w-full pt-8 border-t border-[#F0F0F0]">
-          <div className="flex items-center justify-center gap-2.5 text-sm font-medium text-slate-700">
-            <Cpu className="w-5 h-5 text-[#0066CC]" />
-            <span>Autonomous AI Workflows</span>
-          </div>
-          <div className="flex items-center justify-center gap-2.5 text-sm font-medium text-slate-700">
-            <Zap className="w-5 h-5 text-[#5E5CE6]" />
-            <span>Sub-Millisecond Telemetry</span>
-          </div>
-          <div className="flex items-center justify-center gap-2.5 text-sm font-medium text-slate-700">
-            <Shield className="w-5 h-5 text-emerald-600" />
-            <span>Multitenant DB Isolation</span>
-          </div>
-        </div>
       </div>
     </section>
   );
