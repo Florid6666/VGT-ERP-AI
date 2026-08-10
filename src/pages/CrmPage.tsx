@@ -69,6 +69,7 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
       id: 'lead',
       title: 'Lead Management',
       subtitle: 'Generate, assign, qualify, and nurture leads automatically.',
+      image: '/images/about_colleagues.png',
       icon: <UserPlus className="w-5 h-5 text-[#0066CC]" />,
       badgeColor: 'bg-blue-50 text-[#0066CC] border-blue-200',
       tags: [
@@ -88,6 +89,7 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
       id: 'contact',
       title: 'Contact Management',
       subtitle: 'Maintain complete customer profiles in one central hub.',
+      image: '/images/professional_woman_office.png',
       icon: <Users className="w-5 h-5 text-[#00C7BE]" />,
       badgeColor: 'bg-teal-50 text-[#00C7BE] border-teal-200',
       tags: [
@@ -106,6 +108,7 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
       id: 'opportunity',
       title: 'Opportunity Management',
       subtitle: 'Track every sales opportunity from inquiry to closed deal.',
+      image: '/images/erp_strategic_projection.png',
       icon: <Target className="w-5 h-5 text-[#5E5CE6]" />,
       badgeColor: 'bg-purple-50 text-[#5E5CE6] border-purple-200',
       tags: [
@@ -123,6 +126,7 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
       id: 'automation',
       title: 'Sales Automation',
       subtitle: 'Automate repetitive sales tasks and boost rep efficiency.',
+      image: '/images/erp_autonomous_invoicing_vgt.png',
       icon: <Zap className="w-5 h-5 text-amber-600" />,
       badgeColor: 'bg-amber-50 text-amber-600 border-amber-200',
       tags: [
@@ -140,6 +144,7 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
       id: 'service',
       title: 'Customer Service Management',
       subtitle: 'Deliver exceptional customer support across every channel.',
+      image: '/images/happy_manager_vgt_erp_ai.png',
       icon: <Headphones className="w-5 h-5 text-emerald-600" />,
       badgeColor: 'bg-emerald-50 text-emerald-600 border-emerald-200',
       tags: [
@@ -157,6 +162,7 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
       id: 'marketing',
       title: 'Marketing Automation',
       subtitle: 'Create targeted, multi-channel campaigns that convert.',
+      image: '/images/ind_retail.png',
       icon: <Megaphone className="w-5 h-5 text-rose-600" />,
       badgeColor: 'bg-rose-50 text-rose-600 border-rose-200',
       tags: [
@@ -466,40 +472,54 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
             </h2>
           </div>
 
-          {/* 3-Column Balanced Grid for 6 Core Modules */}
+          {/* 3-Column Balanced Grid for 6 Core Modules (With Photo Banners) */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8">
             {featureModules.map((mod, idx) => (
               <div
                 key={mod.id}
-                className="bg-white rounded-[24px] p-7 border border-slate-200/90 shadow-xs hover:border-[#0066CC] hover:shadow-xl transition-all duration-300 flex flex-col justify-between space-y-6 group"
+                className="bg-white rounded-[24px] border border-slate-200/90 shadow-xs hover:border-[#0066CC] hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden group"
               >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200/80 group-hover:scale-110 transition-transform">
-                      {mod.icon}
-                    </div>
-                    <span className={`text-[10px] font-mono font-bold px-3 py-1 rounded-full border ${mod.badgeColor}`}>
+                {/* Photo Banner Header */}
+                <div className="relative h-44 w-full overflow-hidden bg-slate-100 border-b border-slate-200/60">
+                  <img
+                    src={mod.image}
+                    alt={mod.title}
+                    className="w-full h-full object-cover block group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-4 right-4">
+                    <span className={`text-[10px] font-mono font-bold px-3 py-1.5 rounded-full border shadow-xs backdrop-blur-md ${mod.badgeColor}`}>
                       SUITE 0{idx + 1}
                     </span>
                   </div>
+                </div>
 
-                  <h3 className="text-xl font-bold text-[#1D1D1F] mb-2 group-hover:text-[#0066CC] transition-colors">
-                    {mod.title}
-                  </h3>
-                  <p className="text-xs text-slate-500 leading-relaxed font-normal mb-6">
-                    {mod.subtitle}
-                  </p>
+                {/* Card Content Body */}
+                <div className="p-7 flex-1 flex flex-col justify-between space-y-6">
+                  <div>
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80 group-hover:scale-110 transition-transform">
+                        {mod.icon}
+                      </div>
+                      <h3 className="text-xl font-bold text-[#1D1D1F] group-hover:text-[#0066CC] transition-colors">
+                        {mod.title}
+                      </h3>
+                    </div>
 
-                  <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100">
-                    {mod.tags.map((tag, tIdx) => (
-                      <span
-                        key={tIdx}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200/70 text-xs font-semibold text-slate-700 hover:bg-blue-50 hover:text-[#0066CC] hover:border-blue-200 transition-all"
-                      >
-                        <Check className="w-3.5 h-3.5 text-[#0066CC] shrink-0" />
-                        <span>{tag}</span>
-                      </span>
-                    ))}
+                    <p className="text-xs text-slate-500 leading-relaxed font-normal mb-6">
+                      {mod.subtitle}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100">
+                      {mod.tags.map((tag, tIdx) => (
+                        <span
+                          key={tIdx}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200/70 text-xs font-semibold text-slate-700 hover:bg-blue-50 hover:text-[#0066CC] hover:border-blue-200 transition-all"
+                        >
+                          <Check className="w-3.5 h-3.5 text-[#0066CC] shrink-0" />
+                          <span>{tag}</span>
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -629,58 +649,86 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
           </div>
         </div>
 
-        {/* INTEGRATIONS & INDUSTRIES GRID */}
+        {/* INTEGRATIONS & INDUSTRIES VISUAL SHOWCASE */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-24">
-          {/* Integrations */}
-          <div className="lg:col-span-6 bg-white rounded-[24px] p-8 border border-slate-200/90 shadow-xs space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="p-3 rounded-2xl bg-blue-50 text-[#0066CC]">
-                <Layers className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-[#1D1D1F]">Ecosystem Integrations</h3>
-                <p className="text-xs text-slate-500 font-normal">Seamless API connectors across your tech stack</p>
+          {/* Ecosystem Integrations */}
+          <div className="lg:col-span-6 bg-white rounded-[24px] border border-slate-200/90 shadow-xs overflow-hidden flex flex-col justify-between">
+            <div className="relative h-48 w-full overflow-hidden bg-slate-900 border-b border-slate-200/80">
+              <img
+                src="/images/dynamics365_enterprise_hub.png"
+                alt="Ecosystem Integrations"
+                className="w-full h-full object-cover block opacity-90 hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-4 left-6 px-3 py-1 rounded-full bg-slate-950/80 border border-white/20 text-xs font-mono text-white">
+                🔌 Real-Time API Connectors
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-2.5">
-              {integrations.map((item, idx) => (
-                <span
-                  key={idx}
-                  className="px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-800"
-                >
-                  {item}
-                </span>
-              ))}
+            <div className="p-8 space-y-6">
+              <div className="flex items-center gap-3">
+                <div className="p-3 rounded-2xl bg-blue-50 text-[#0066CC]">
+                  <Layers className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-[#1D1D1F]">Ecosystem Integrations</h3>
+                  <p className="text-xs text-slate-500 font-normal">Connect Microsoft 365, Teams, Outlook, ERP & HR systems seamlessly</p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {integrations.map((item, idx) => (
+                  <span
+                    key={idx}
+                    className="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-800 hover:bg-blue-50 hover:text-[#0066CC] transition-colors"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Industries Served */}
-          <div className="lg:col-span-6 bg-white rounded-[24px] p-8 border border-slate-200/90 shadow-xs space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="p-3 rounded-2xl bg-purple-50 text-[#5E5CE6]">
-                <Building2 className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-[#1D1D1F]">Industries We Serve</h3>
-                <p className="text-xs text-slate-500 font-normal">Pre-packaged modules tailored to your sector</p>
+          {/* Industries We Serve */}
+          <div className="lg:col-span-6 bg-white rounded-[24px] border border-slate-200/90 shadow-xs overflow-hidden flex flex-col justify-between">
+            <div className="relative h-48 w-full overflow-hidden bg-slate-900 border-b border-slate-200/80">
+              <img
+                src="/images/ind_manufacturing.png"
+                alt="Industries We Serve"
+                className="w-full h-full object-cover block opacity-90 hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-4 left-6 px-3 py-1 rounded-full bg-slate-950/80 border border-white/20 text-xs font-mono text-white">
+                🏭 Industry-Specific Pre-packaged AI
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-2.5">
-              {industriesList.map((ind, idx) => (
-                <span
-                  key={idx}
-                  className="px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-800"
-                >
-                  {ind}
-                </span>
-              ))}
+            <div className="p-8 space-y-6">
+              <div className="flex items-center gap-3">
+                <div className="p-3 rounded-2xl bg-purple-50 text-[#5E5CE6]">
+                  <Building2 className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-[#1D1D1F]">Industries We Serve</h3>
+                  <p className="text-xs text-slate-500 font-normal">Tailored for manufacturing, staffing, healthcare, logistics & finance</p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {industriesList.map((ind, idx) => (
+                  <span
+                    key={idx}
+                    className="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-800 hover:bg-purple-50 hover:text-[#5E5CE6] transition-colors"
+                  >
+                    {ind}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
-        {/* BENEFITS LIST (10 CARDS) */}
+        {/* BENEFITS LIST WITH PRODUCTIVITY IMAGE SHOWCASE */}
         <div className="mb-24">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <span className="text-xs font-bold uppercase tracking-widest text-emerald-700 bg-emerald-50 px-4 py-1.5 rounded-full border border-emerald-200 mb-4 inline-block">
@@ -691,18 +739,44 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {benefitsList.map((ben, idx) => (
-              <div
-                key={idx}
-                className="bg-white rounded-2xl p-5 border border-slate-200/90 text-center space-y-3 hover:border-emerald-500 transition-all shadow-xs"
-              >
-                <div className="w-8 h-8 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mx-auto">
-                  <Check className="w-4 h-4 stroke-[3]" />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Visual Productivity Showcase */}
+            <div className="lg:col-span-5 bg-white rounded-[28px] border border-slate-200/90 shadow-lg overflow-hidden relative group">
+              <div className="relative h-96 w-full overflow-hidden bg-slate-950">
+                <img
+                  src="/images/happy_manager_vgt_erp_ai.png"
+                  alt="High Productivity Executive Team"
+                  className="w-full h-full object-cover block group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6 text-white space-y-2">
+                  <span className="text-[11px] font-mono font-bold px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-400 inline-block">
+                    ⚡ PROVEN ROI & ACCELERATION
+                  </span>
+                  <h4 className="text-xl font-bold text-white">Empower Teams & Shorten Sales Cycles</h4>
+                  <p className="text-xs text-slate-300 font-normal leading-relaxed">
+                    Proven to boost sales team conversion rates while eliminating up to 15 hours per week of manual CRM data logging.
+                  </p>
                 </div>
-                <span className="block text-xs font-bold text-[#1D1D1F]">{ben}</span>
               </div>
-            ))}
+            </div>
+
+            {/* 10 Outcome Cards */}
+            <div className="lg:col-span-7 grid grid-cols-2 gap-4">
+              {benefitsList.map((ben, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white rounded-2xl p-5 border border-slate-200/90 flex items-center gap-3.5 hover:border-emerald-500 transition-all shadow-xs group"
+                >
+                  <div className="w-9 h-9 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                    <Check className="w-4 h-4 stroke-[3]" />
+                  </div>
+                  <span className="block text-xs font-bold text-[#1D1D1F] group-hover:text-emerald-700 transition-colors">
+                    {ben}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -748,37 +822,48 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
           </div>
         </div>
 
-        {/* FINAL CTA BANNER */}
-        <div className="bg-[#1D1D1F] text-white rounded-[28px] p-10 sm:p-16 text-center relative overflow-hidden shadow-2xl">
-          <div className="max-w-3xl mx-auto space-y-6 relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-950/80 border border-blue-500/40 text-xs font-bold text-[#2997FF]">
-              <Sparkles className="w-4 h-4" />
-              <span>START YOUR AI CRM JOURNEY TODAY</span>
-            </div>
+        {/* RICH VISUAL FINAL CTA BANNER */}
+        <div className="relative rounded-[28px] overflow-hidden shadow-2xl">
+          {/* Background Image Layer */}
+          <img
+            src="/images/contact_bg.png"
+            alt="VGT AI CRM Setup Portal"
+            className="absolute inset-0 w-full h-full object-cover block"
+          />
+          {/* Dark Backdrop Glass Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0B0D12]/95 via-[#1D1D1F]/90 to-[#0B0D12]/95 backdrop-blur-sm" />
 
-            <h2 className="display-lg-text text-white font-extrabold tracking-tight">
-              Ready to Grow Your Business with AI?
-            </h2>
+          <div className="relative z-10 p-10 sm:p-16 text-center text-white">
+            <div className="max-w-3xl mx-auto space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-950/80 border border-blue-500/40 text-xs font-bold text-[#2997FF]">
+                <Sparkles className="w-4 h-4" />
+                <span>START YOUR AI CRM JOURNEY TODAY</span>
+              </div>
 
-            <p className="lead-text text-slate-300 font-normal">
-              Transform your sales, marketing, and customer service with VGT AI CRM. Empower your teams with intelligent automation, actionable insights, and a 360° view of every customer relationship.
-            </p>
+              <h2 className="display-lg-text text-white font-extrabold tracking-tight">
+                Ready to Grow Your Business with AI?
+              </h2>
 
-            <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button
-                onClick={onOpenContact}
-                className="w-full sm:w-auto px-9 py-4 rounded-full bg-[#0066CC] hover:bg-[#0071E3] text-white font-semibold text-base flex items-center justify-center gap-2 shadow-lg hover:scale-105 transition-all"
-              >
-                <span>Book a Free CRM Demo</span>
-                <ArrowRight className="w-5 h-5" />
-              </button>
+              <p className="lead-text text-slate-300 font-normal">
+                Transform your sales, marketing, and customer service with VGT AI CRM. Empower your teams with intelligent automation, actionable insights, and a 360° view of every customer relationship.
+              </p>
 
-              <button
-                onClick={onOpenContact}
-                className="w-full sm:w-auto px-9 py-4 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-base transition-all"
-              >
-                <span>Request a Personalized Consultation</span>
-              </button>
+              <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button
+                  onClick={onOpenContact}
+                  className="w-full sm:w-auto px-9 py-4 rounded-full bg-[#0066CC] hover:bg-[#0071E3] text-white font-semibold text-base flex items-center justify-center gap-2 shadow-lg hover:scale-105 active:scale-95 transition-all"
+                >
+                  <span>Book a Free CRM Demo</span>
+                  <ArrowRight className="w-5 h-5" />
+                </button>
+
+                <button
+                  onClick={onOpenContact}
+                  className="w-full sm:w-auto px-9 py-4 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-base transition-all"
+                >
+                  <span>Request a Personalized Consultation</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
