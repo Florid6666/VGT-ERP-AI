@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Check, ArrowLeft, ArrowRight } from 'lucide-react';
 
 export const StartingPointsSection: React.FC = () => {
   const [activeSlide, setActiveSlide] = useState<number>(0);
+  const [isPaused, setIsPaused] = useState<boolean>(false);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const startingPoints = [
     {
@@ -25,7 +27,7 @@ export const StartingPointsSection: React.FC = () => {
       title: "YOUR ERP RECORDS THE PAST. IT DOESN'T SHAPE THE FUTURE.",
       description:
         "Basic ERP tells you what happened. VGT ERP AI tells you what will happen, what to do about it, and then does most of it for you — on top of the data you already have.",
-      bgImage: '/images/erp_ai_operations.png',
+      bgImage: '/images/legacy_erp_past_records.png',
       highlights: [
         "Migrate existing masters and history, keep your workflows",
         "AI layer for forecasting, anomalies and recommendations",
@@ -34,6 +36,26 @@ export const StartingPointsSection: React.FC = () => {
       ],
     },
   ];
+
+  // Automatic Slideshow Timer (6s rotation)
+  useEffect(() => {
+    if (!isPaused) {
+      timerRef.current = setInterval(() => {
+        setActiveSlide((prev) => (prev + 1) % startingPoints.length);
+      }, 6000);
+    }
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [isPaused, startingPoints.length]);
+
+  const handleNext = () => {
+    setActiveSlide((prev) => (prev + 1) % startingPoints.length);
+  };
+
+  const handlePrev = () => {
+    setActiveSlide((prev) => (prev === 0 ? startingPoints.length - 1 : prev - 1));
+  };
 
   const current = startingPoints[activeSlide];
 
@@ -55,9 +77,12 @@ export const StartingPointsSection: React.FC = () => {
         </p>
       </div>
 
-      {/* 100% Full-Bleed Stretched Covered Container */}
-      <div className="relative w-full overflow-hidden min-h-[680px] sm:min-h-[780px] lg:min-h-[840px] border-t border-slate-200 shadow-2xl transition-all duration-700 text-left group">
-        
+      {/* 100% Full-Bleed Interactive Slideshow Container */}
+      <div
+        className="relative w-full overflow-hidden min-h-[680px] sm:min-h-[780px] lg:min-h-[840px] border-t border-slate-200 shadow-2xl transition-all duration-700 text-left group"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
         {/* Full-Bleed Stretched Background Image */}
         <img
           key={current.id}
@@ -75,8 +100,9 @@ export const StartingPointsSection: React.FC = () => {
         {/* Full-Bleed Overlay Content Wrapper */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10 pt-6 sm:pt-8 pb-8 sm:pb-12 flex flex-col justify-between min-h-[680px] sm:min-h-[780px] lg:min-h-[840px]">
           
-          {/* Top Bar Switcher Tabs */}
+          {/* Top Bar Switcher Tabs & Controls */}
           <div className="flex items-center justify-between gap-4 pb-6">
+            {/* Slide Tabs */}
             <div className="flex items-center gap-2 bg-slate-950/80 p-1.5 rounded-2xl border border-white/20 backdrop-blur-xl shadow-lg">
               {startingPoints.map((item, idx) => (
                 <button
@@ -93,19 +119,33 @@ export const StartingPointsSection: React.FC = () => {
               ))}
             </div>
 
-            {/* Slider Controls */}
-            <div className="flex items-center gap-2">
+            {/* Slideshow Navigation & Progress Indicator */}
+            <div className="flex items-center gap-3">
+              {/* Dot indicators */}
+              <div className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-950/60 border border-white/10 backdrop-blur-md">
+                {startingPoints.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveSlide(idx)}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      activeSlide === idx ? 'w-6 bg-[#0066CC]' : 'w-2 bg-white/40 hover:bg-white/70'
+                    }`}
+                  />
+                ))}
+              </div>
+
+              {/* Prev / Next Buttons */}
               <button
-                onClick={() => setActiveSlide((prev) => (prev === 0 ? 1 : 0))}
+                onClick={handlePrev}
                 className="p-3 rounded-2xl bg-slate-950/80 hover:bg-slate-900 text-white border border-white/20 transition-all active:scale-95 backdrop-blur-xl shadow-lg"
-                title="Previous Option"
+                title="Previous Slide"
               >
                 <ArrowLeft className="w-4 h-4" />
               </button>
               <button
-                onClick={() => setActiveSlide((prev) => (prev === 0 ? 1 : 0))}
+                onClick={handleNext}
                 className="p-3 rounded-2xl bg-slate-950/80 hover:bg-slate-900 text-white border border-white/20 transition-all active:scale-95 backdrop-blur-xl shadow-lg"
-                title="Next Option"
+                title="Next Slide"
               >
                 <ArrowRight className="w-4 h-4" />
               </button>
@@ -116,7 +156,7 @@ export const StartingPointsSection: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pt-8 pb-2">
             {/* Left Headline & Description (7 cols) */}
             <div className="lg:col-span-7">
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6 tracking-tight leading-tight uppercase drop-shadow-md">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6 tracking-tight leading-tight uppercase drop-shadow-md transition-all duration-500">
                 {current.title}
               </h3>
 
