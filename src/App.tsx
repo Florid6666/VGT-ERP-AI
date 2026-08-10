@@ -4,6 +4,7 @@ import { HeroSection } from './components/HeroSection';
 import { StartingPointsSection } from './components/StartingPointsSection';
 import { WhyVgtSection } from './components/WhyVgtSection';
 import { ErpComparisonSection } from './components/ErpComparisonSection';
+import { OneScreenSection } from './components/OneScreenSection';
 import { ShowcaseDashboard } from './components/ShowcaseDashboard';
 import { FeatureTabs } from './components/FeatureTabs';
 import { CoreModulesSection } from './components/CoreModulesSection';
@@ -110,6 +111,8 @@ export function App() {
           <WhyVgtSection />
 
           <ErpComparisonSection />
+
+          <OneScreenSection />
 
           <ShowcaseDashboard />
 
