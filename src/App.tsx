@@ -6,6 +6,7 @@ import { WhyVgtSection } from './components/WhyVgtSection';
 import { ErpComparisonSection } from './components/ErpComparisonSection';
 import { ShowcaseDashboard } from './components/ShowcaseDashboard';
 import { FeatureTabs } from './components/FeatureTabs';
+import { CrmShowcaseSection } from './components/CrmShowcaseSection';
 import { IndustryGrid } from './components/IndustryGrid';
 import { MicrosoftPartnershipCallout } from './components/MicrosoftPartnershipCallout';
 import { TestimonialCarousel } from './components/TestimonialCarousel';
@@ -67,6 +68,13 @@ export function App() {
         <FeatureTabs
           onOpenTrial={() => {
             showToast("Feature node demo requested.");
+            scrollToContact();
+          }}
+        />
+
+        <CrmShowcaseSection
+          onOpenTrial={() => {
+            showToast("CRM AI demo requested.");
             scrollToContact();
           }}
         />
