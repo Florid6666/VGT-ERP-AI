@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Database, Rocket, TrendingUp } from 'lucide-react';
+import { Search, Database, Rocket, TrendingUp, ArrowRight } from 'lucide-react';
 
 interface StepItem {
   step: string;
@@ -67,22 +67,37 @@ export const RolloutSection: React.FC = () => {
           </p>
         </div>
 
-        {/* 4 Step Columns Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+        {/* 4 Step Columns Grid with Animated Connector Arrows */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 relative">
           {steps.map((item, idx) => (
             <div
               key={idx}
-              className="flex flex-col justify-start group transition-all duration-300"
+              className="flex flex-col justify-start group relative transition-all duration-300"
             >
-              {/* Circular Icon Badge */}
-              <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#0066CC] to-[#5E5CE6] text-white flex items-center justify-center mb-6 shadow-md shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300">
-                {item.icon}
+              {/* Top Row: Icon Badge & Inter-Step Arrow Connector */}
+              <div className="flex items-center justify-between mb-6">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#0066CC] to-[#5E5CE6] text-white flex items-center justify-center shadow-md shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300">
+                  {item.icon}
+                </div>
+
+                {/* Desktop Connecting Arrow (Shown between steps 1->2, 2->3, 3->4) */}
+                {idx < steps.length - 1 && (
+                  <div className="hidden lg:flex items-center gap-1.5 text-[#0066CC] opacity-60 group-hover:opacity-100 transition-opacity duration-300 pr-2">
+                    <div className="w-10 sm:w-14 h-[2px] bg-gradient-to-r from-blue-300 via-[#0066CC] to-indigo-400 rounded-full" />
+                    <ArrowRight className="w-5 h-5 text-[#0066CC] transform group-hover:translate-x-1.5 transition-transform duration-300" />
+                  </div>
+                )}
               </div>
 
-              {/* Step Label */}
-              <span className="text-xs font-extrabold uppercase tracking-widest text-[#0066CC] mb-3">
-                {item.step}
-              </span>
+              {/* Step Label with Mobile/Tablet Arrow Indicator */}
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-xs font-extrabold uppercase tracking-widest text-[#0066CC]">
+                  {item.step}
+                </span>
+                {idx < steps.length - 1 && (
+                  <ArrowRight className="w-3.5 h-3.5 text-[#0066CC] lg:hidden animate-pulse" />
+                )}
+              </div>
 
               {/* Title */}
               <h3 className="text-xl font-bold text-[#1D1D1F] mb-3 tracking-tight group-hover:text-[#0066CC] transition-colors duration-200">
