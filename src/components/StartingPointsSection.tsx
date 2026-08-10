@@ -11,7 +11,7 @@ export const StartingPointsSection: React.FC = () => {
       title: 'STILL RUNNING ON SPREADSHEETS, WHATSAPP AND MEMORY?',
       description:
         "You don't need to spend two years installing legacy software first. Start directly on an AI-native platform — structured operations from week one, intelligence from day one.",
-      bgImage: '/images/crm_dashboard_mockup.png',
+      bgImage: '/images/frustrated_business_owner_whatsapp.png',
       highlights: [
         "Go live module by module, no big-bang disruption",
         "Stock, production and costing visible in real time",
