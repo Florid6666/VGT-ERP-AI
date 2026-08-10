@@ -87,44 +87,32 @@ export const IndustryGrid: React.FC = () => {
           </p>
         </div>
 
-        {/* 24px Store Utility Cards Grid */}
+        {/* Straight Corner Cards Grid (No Curved Corners, No Borders, No Shadows, Crisp Images, No Icons, Left-Aligned Edge Text) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {industries.map((ind) => (
             <div
               key={ind.id}
-              className="group relative rounded-[24px] bg-white border border-slate-200/90 overflow-hidden shadow-xs transition-all duration-300 hover:shadow-2xl hover:border-[#0066CC]/40 hover:-translate-y-1.5 flex flex-col justify-between"
+              className="group relative rounded-none bg-white overflow-hidden flex flex-col justify-between"
             >
-              {/* Card Image Banner */}
+              {/* Card Image Banner with Crisp Edges */}
               <div className="relative h-56 w-full overflow-hidden bg-[#F5F5F7]">
                 <img
                   src={ind.image}
                   alt={ind.name}
-                  className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500"
+                  className="w-full h-full object-cover block"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent"></div>
-                
-                {/* Stat Badge */}
-                <div className="absolute top-4 right-4 px-3.5 py-1.5 rounded-full bg-white/95 border border-slate-200 text-xs font-mono text-[#1D1D1F] flex items-center gap-2 shadow-xs">
-                  <span className="text-[#0066CC] font-bold text-sm">{ind.stat}</span>
-                  <span className="text-slate-500 text-[10px] font-semibold">{ind.statLabel}</span>
-                </div>
               </div>
 
-              {/* Card Content */}
-              <div className="p-8 flex-1 flex flex-col justify-between space-y-4">
+              {/* Card Content (Left-Aligned Starting from Left Edge) */}
+              <div className="pt-6 pb-2 px-0 flex-1 flex flex-col justify-between space-y-4 text-left">
                 <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-3 rounded-2xl bg-[#F5F5F7] border border-slate-200/60">
-                      {ind.icon}
-                    </div>
-                    <h3 className="text-2xl font-bold text-[#1D1D1F] font-display">{ind.name}</h3>
-                  </div>
-                  <p className="text-base text-slate-600 leading-relaxed font-normal">
+                  <h3 className="text-2xl font-bold text-[#1D1D1F] font-display mb-3 text-left">{ind.name}</h3>
+                  <p className="text-base text-slate-600 leading-relaxed font-normal text-left">
                     {ind.description}
                   </p>
                 </div>
 
-                <div className="pt-6 border-t border-[#F0F0F0] flex items-center justify-between text-sm font-semibold text-[#0066CC] group-hover:text-[#0071E3] transition-colors">
+                <div className="pt-4 flex items-center justify-start gap-2 text-sm font-semibold text-[#0066CC] group-hover:text-[#0071E3] transition-colors">
                   <span>Explore Industry Module</span>
                   <ArrowUpRight className="w-5 h-5" />
                 </div>
