@@ -315,52 +315,80 @@ export const CrmPage: React.FC<CrmPageProps> = ({ onBackToHome, onOpenContact })
         </div>
 
         {/* HERO SECTION */}
-        <div className="text-center max-w-4xl mx-auto mb-16 sm:mb-20">
-          <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-[#0066CC]/10 border border-[#0066CC]/25 text-[#0066CC] text-xs font-bold uppercase tracking-widest mb-6">
-            <Sparkles className="w-4 h-4" />
-            <span>INTELLIGENT CUSTOMER RELATIONSHIP MANAGEMENT</span>
+        <div className="relative mb-20">
+          {/* Hero Background Ambient Spotlight Mesh */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-[90%] bg-gradient-to-r from-blue-400/15 via-purple-400/15 to-cyan-400/15 blur-[140px] rounded-full pointer-events-none -z-10" />
+
+          {/* Hero Text Content */}
+          <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16">
+            <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#0066CC] text-xs font-bold uppercase tracking-widest mb-6 shadow-xs">
+              <Sparkles className="w-4 h-4 text-[#0066CC]" />
+              <span>INTELLIGENT CUSTOMER RELATIONSHIP MANAGEMENT</span>
+            </div>
+
+            <h1 className="display-lg-text text-[#1D1D1F] font-extrabold tracking-tight mb-6 leading-[1.1]">
+              VGT AI CRM — Sell Smarter, Close Faster &{' '}
+              <span className="bg-gradient-to-r from-[#0066CC] via-[#5E5CE6] to-[#00C7BE] bg-clip-text text-transparent">
+                Accelerate Growth
+              </span>
+            </h1>
+
+            <p className="lead-text text-slate-600 font-normal max-w-3xl mx-auto mb-10">
+              Your CRM should do more than store customer information. VGT AI CRM acts as an intelligent sales assistant that helps your team generate leads, manage relationships, automate workflows, and close deals faster.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <button
+                onClick={onOpenContact}
+                className="w-full sm:w-auto px-9 py-4 rounded-full bg-[#0066CC] hover:bg-[#0071E3] text-white font-semibold text-base shadow-md hover:shadow-xl hover:scale-105 active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 group"
+              >
+                <span>Request a Free Demo</span>
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </button>
+
+              <button
+                onClick={onOpenContact}
+                className="w-full sm:w-auto px-9 py-4 rounded-full bg-white hover:bg-slate-50 border border-slate-300 text-[#1D1D1F] font-semibold text-base shadow-xs hover:border-slate-400 transition-all duration-300"
+              >
+                <span>Schedule a CRM Consultation</span>
+              </button>
+            </div>
           </div>
 
-          <h1 className="display-lg-text text-[#1D1D1F] font-extrabold tracking-tight mb-6 leading-tight">
-            VGT AI CRM — Sell Smarter, Close Faster &{' '}
-            <span className="bg-gradient-to-r from-[#0066CC] via-[#5E5CE6] to-[#00C7BE] bg-clip-text text-transparent">
-              Accelerate Growth
-            </span>
-          </h1>
+          {/* CLEAN UNBOXED 5K DASHBOARD PREVIEW */}
+          <div className="relative max-w-6xl mx-auto group">
+            <div className="relative rounded-2xl overflow-hidden border border-slate-200/90 shadow-[0_20px_50px_rgba(0,0,0,0.12)] bg-slate-950">
+              <img
+                src="/images/crm_dashboard_mockup.png"
+                alt="VGT AI CRM Executive Dashboard"
+                className="w-full h-auto object-contain block group-hover:scale-[1.005] transition-transform duration-500"
+              />
+              
+              {/* Floating Top Telemetry Badge */}
+              <div className="absolute top-4 left-4 sm:top-6 sm:left-6 px-4 py-2 rounded-full bg-slate-950/85 backdrop-blur-md border border-white/20 text-xs font-mono text-white flex items-center gap-2.5 shadow-xl">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="font-semibold tracking-wide">LIVE AI SALES COPILOT & PIPELINE TELEMETRY</span>
+              </div>
+            </div>
 
-          <p className="lead-text text-slate-600 font-normal max-w-3xl mx-auto mb-10">
-            Your CRM should do more than store customer information. VGT AI CRM acts as an intelligent sales assistant that helps your team generate leads, manage relationships, automate workflows, and close deals faster.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              onClick={onOpenContact}
-              className="w-full sm:w-auto px-9 py-4 rounded-full bg-[#0066CC] hover:bg-[#0071E3] text-white font-semibold text-base shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
-            >
-              <span>Request a Free Demo</span>
-              <ArrowRight className="w-5 h-5" />
-            </button>
-
-            <button
-              onClick={onOpenContact}
-              className="w-full sm:w-auto px-9 py-4 rounded-full bg-white hover:bg-slate-100 border border-slate-300 text-[#1D1D1F] font-semibold text-base shadow-xs transition-all duration-300"
-            >
-              <span>Schedule a CRM Consultation</span>
-            </button>
-          </div>
-        </div>
-
-        {/* 5K DASHBOARD PREVIEW */}
-        <div className="bg-white rounded-[28px] border border-slate-200/90 shadow-2xl p-4 sm:p-8 mb-20 overflow-hidden relative">
-          <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-slate-950">
-            <img
-              src="/images/crm_dashboard_mockup.png"
-              alt="VGT AI CRM Executive Dashboard"
-              className="w-full h-auto object-contain block"
-            />
-            <div className="absolute top-4 left-4 px-4 py-2 rounded-full bg-slate-950/85 backdrop-blur-md border border-white/20 text-xs font-mono text-white flex items-center gap-2 shadow-lg">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
-              <span>LIVE AI SALES COPILOT & PIPELINE TELEMETRY</span>
+            {/* Quick KPI Stats Bar Below Dashboard */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+              <div className="bg-white rounded-2xl p-4 border border-slate-200/90 text-center shadow-xs">
+                <span className="block text-xl font-extrabold text-[#0066CC]">+42%</span>
+                <span className="text-xs font-medium text-slate-500">Pipeline Velocity</span>
+              </div>
+              <div className="bg-white rounded-2xl p-4 border border-slate-200/90 text-center shadow-xs">
+                <span className="block text-xl font-extrabold text-[#5E5CE6]">94%</span>
+                <span className="text-xs font-medium text-slate-500">AI Forecast Accuracy</span>
+              </div>
+              <div className="bg-white rounded-2xl p-4 border border-slate-200/90 text-center shadow-xs">
+                <span className="block text-xl font-extrabold text-emerald-600">0 Entry</span>
+                <span className="text-xs font-medium text-slate-500">Manual Logging</span>
+              </div>
+              <div className="bg-white rounded-2xl p-4 border border-slate-200/90 text-center shadow-xs">
+                <span className="block text-xl font-extrabold text-[#00C7BE]">99.99%</span>
+                <span className="text-xs font-medium text-slate-500">Cloud Uptime</span>
+              </div>
             </div>
           </div>
         </div>
