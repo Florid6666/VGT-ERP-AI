@@ -72,7 +72,7 @@ export const OneScreenSection: React.FC = () => {
             {/* Uncropped Full Screen Dashboard Image */}
             <div className="bg-white rounded-b-2xl overflow-hidden shadow-inner">
               <img
-                src="/images/erp_operations_dashboard.png"
+                src="/images/erpdashboard.png"
                 alt="VGT ERP AI Operations Command Centre"
                 className="w-full h-auto object-contain block transition-transform duration-700 group-hover:scale-[1.01]"
               />

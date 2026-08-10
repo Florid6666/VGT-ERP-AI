@@ -5,7 +5,7 @@ interface LaptopMockupProps {
 }
 
 export const LaptopMockup: React.FC<LaptopMockupProps> = ({
-  initialImage = '/images/erp_operations_dashboard.png',
+  initialImage = '/images/erpdashboard.png',
 }) => {
   return (
     <div className="relative w-full max-w-6xl xl:max-w-7xl mx-auto mt-8 mb-4 group">
