@@ -6,6 +6,7 @@ import { WhyVgtSection } from './components/WhyVgtSection';
 import { ErpComparisonSection } from './components/ErpComparisonSection';
 import { ShowcaseDashboard } from './components/ShowcaseDashboard';
 import { FeatureTabs } from './components/FeatureTabs';
+import { CoreModulesSection } from './components/CoreModulesSection';
 import { CrmShowcaseSection } from './components/CrmShowcaseSection';
 import { IndustryGrid } from './components/IndustryGrid';
 import { MicrosoftPartnershipCallout } from './components/MicrosoftPartnershipCallout';
@@ -118,6 +119,8 @@ export function App() {
               scrollToContact();
             }}
           />
+
+          <CoreModulesSection />
 
           <CrmShowcaseSection
             onOpenTrial={() => {
