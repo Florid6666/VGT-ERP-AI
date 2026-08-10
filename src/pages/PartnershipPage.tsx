@@ -320,7 +320,7 @@ export const PartnershipPage: React.FC<PartnershipPageProps> = ({ onBackToHome, 
     <div className="min-h-screen bg-white text-slate-900 pt-16 pb-20 selection:bg-[#0066CC] selection:text-white">
       
       {/* 100% Edge-to-Edge Viewport Hero Section */}
-      <section className="relative w-full bg-slate-950 overflow-hidden border-b border-slate-800 text-white min-h-[500px] flex items-center mb-16">
+      <section className="relative w-full bg-slate-950 overflow-hidden border-b border-slate-800 text-white min-h-[750px] flex items-center mb-16">
         {/* Background Image Layer Spreading Edge-to-Edge Across Entire Screen */}
         <div
           className="absolute inset-0 bg-cover bg-[#07090E] bg-[center_right] bg-no-repeat"
@@ -332,7 +332,7 @@ export const PartnershipPage: React.FC<PartnershipPageProps> = ({ onBackToHome, 
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/60 z-10" />
 
         {/* Content Container aligned with site grid */}
-        <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-16 sm:py-20">
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-24 sm:py-36">
           
           {/* Top Breadcrumb Navigation inside Hero */}
           <div className="mb-6 flex items-center gap-3">
