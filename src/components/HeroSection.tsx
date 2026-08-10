@@ -114,7 +114,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenTrial, onWatchDe
 
         {/* COMPUTER MONITOR DISPLAY DEMO */}
         <div className="w-full max-w-[1400px] mx-auto px-0 sm:px-2">
-          <LaptopMockup initialImage="/images/erp_operations_dashboard.png" />
+          <LaptopMockup initialImage="/images/erpdashboard.png" />
         </div>
       </div>
     </section>
