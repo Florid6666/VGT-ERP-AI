@@ -14,12 +14,7 @@ export const StartingPointsSection: React.FC = () => {
       description:
         "You don't need to spend two years installing legacy software first. Start directly on an AI-native platform — structured operations from week one, intelligence from day one.",
       bgImage: '/images/frustrated_business_owner_whatsapp.png',
-      highlights: [
-        "Go live module by module, no big-bang disruption",
-        "Stock, production and costing visible in real time",
-        "AI fills the gap left by missing process maturity",
-        "Owner-level clarity without adding back-office headcount",
-      ],
+      highlights: [],
     },
     {
       id: 'basic-erp',
@@ -28,11 +23,22 @@ export const StartingPointsSection: React.FC = () => {
       description:
         "Basic ERP tells you what happened. VGT ERP AI tells you what will happen, what to do about it, and then does most of it for you — on top of the data you already have.",
       bgImage: '/images/legacy_erp_past_records.png',
+      highlights: [],
+    },
+    {
+      id: 'vgt-erp-ai',
+      tabLabel: 'With VGT ERP AI',
+      title: 'AUTONOMOUS INTELLIGENCE IN ACTION FOR MODERN TEAMS.',
+      description:
+        'Transform scattered operations and static databases into a self-steering enterprise core. Experience real-time clarity, automated workflows, and effortless productivity.',
+      bgImage: '/images/happy_manager_vgt_erp_ai.png',
       highlights: [
-        "Migrate existing masters and history, keep your workflows",
-        "AI layer for forecasting, anomalies and recommendations",
-        "Cut manual reporting and reconciliation hours",
-        "Same team, dramatically higher throughput",
+        'Go live module by module, no big-bang disruption',
+        'Stock, production and costing visible in real time',
+        'AI fills the gap left by missing process maturity',
+        'Migrate existing masters and history while keeping your workflows',
+        'Cut manual reporting and reconciliation hours dramatically',
+        'Owner-level clarity without adding back-office headcount',
       ],
     },
   ];
@@ -58,6 +64,7 @@ export const StartingPointsSection: React.FC = () => {
   };
 
   const current = startingPoints[activeSlide];
+  const hasHighlights = current.highlights && current.highlights.length > 0;
 
   return (
     <section className="w-full pt-16 sm:pt-24 pb-0 bg-white relative overflow-hidden border-b border-[#E5E5EA]">
@@ -95,7 +102,7 @@ export const StartingPointsSection: React.FC = () => {
         <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-slate-950/80 via-slate-950/40 to-transparent pointer-events-none" />
 
         {/* Bottom Gradient Overlay to ensure text readability */}
-        <div className="absolute bottom-0 left-0 right-0 h-[60%] bg-gradient-to-t from-slate-950 via-slate-950/85 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-[65%] bg-gradient-to-t from-slate-950 via-slate-950/85 to-transparent pointer-events-none" />
 
         {/* Full-Bleed Overlay Content Wrapper */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10 pt-6 sm:pt-8 pb-8 sm:pb-12 flex flex-col justify-between min-h-[680px] sm:min-h-[780px] lg:min-h-[840px]">
@@ -154,30 +161,32 @@ export const StartingPointsSection: React.FC = () => {
 
           {/* Main Overlay Copy & Checklist */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pt-8 pb-2">
-            {/* Left Headline & Description (7 cols) */}
-            <div className="lg:col-span-7">
+            {/* Headline & Description */}
+            <div className={hasHighlights ? "lg:col-span-7" : "lg:col-span-12 max-w-4xl"}>
               <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6 tracking-tight leading-tight uppercase drop-shadow-md transition-all duration-500">
                 {current.title}
               </h3>
 
-              <p className="text-slate-200 text-base sm:text-lg leading-relaxed font-normal max-w-2xl drop-shadow">
+              <p className="text-slate-200 text-base sm:text-lg leading-relaxed font-normal max-w-3xl drop-shadow">
                 {current.description}
               </p>
             </div>
 
-            {/* Right Checklist Box (5 cols) */}
-            <div className="lg:col-span-5 bg-slate-950/85 backdrop-blur-xl border border-white/20 p-6 sm:p-8 rounded-3xl shadow-2xl">
-              <ul className="space-y-4">
-                {current.highlights.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-3.5 text-xs sm:text-sm font-medium text-slate-100">
-                    <div className="p-1 rounded-full bg-[#0066CC] text-white mt-0.5 shrink-0 shadow-sm">
-                      <Check className="w-3.5 h-3.5 stroke-[3]" />
-                    </div>
-                    <span className="leading-snug">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {/* Right Checklist Box (Only rendered for slide 3 with highlights) */}
+            {hasHighlights && (
+              <div className="lg:col-span-5 bg-slate-950/85 backdrop-blur-xl border border-white/20 p-6 sm:p-8 rounded-3xl shadow-2xl">
+                <ul className="space-y-3.5">
+                  {current.highlights.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3.5 text-xs sm:text-sm font-medium text-slate-100">
+                      <div className="p-1 rounded-full bg-[#0066CC] text-white mt-0.5 shrink-0 shadow-sm">
+                        <Check className="w-3.5 h-3.5 stroke-[3]" />
+                      </div>
+                      <span className="leading-snug">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
         </div>
