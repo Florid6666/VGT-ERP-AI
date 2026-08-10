@@ -362,11 +362,6 @@ export const PartnershipPage: React.FC<PartnershipPageProps> = ({ onBackToHome, 
               </span>
             </h1>
 
-            {/* Sub-headline */}
-            <p className="text-xl sm:text-2xl font-bold text-cyan-200 tracking-wide">
-              Transform Your Business with Microsoft Business Applications & AI
-            </p>
-
             {/* Primary Action Hero Buttons */}
             <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-4">
               <button
@@ -382,22 +377,6 @@ export const PartnershipPage: React.FC<PartnershipPageProps> = ({ onBackToHome, 
               >
                 <span>Talk to a Microsoft Expert</span>
               </button>
-            </div>
-
-            {/* Capability Badges Strip */}
-            <div className="pt-6 border-t border-white/15 flex flex-wrap items-center justify-start gap-3 text-xs font-semibold text-slate-300">
-              <div className="px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-cyan-400" /> Dynamics 365 Finance & Supply Chain
-              </div>
-              <div className="px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-cyan-400" /> Business Central & Sales
-              </div>
-              <div className="px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-cyan-400" /> Microsoft 365 & Copilot AI
-              </div>
-              <div className="px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-cyan-400" /> Azure & Power Platform
-              </div>
             </div>
 
           </div>
